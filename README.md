@@ -1,79 +1,104 @@
 <html lang="ko"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>학교 급식표</title>
+    <title>GKS 학교 급식표</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-bg: rgba(255, 255, 255, 0.9);
+            --dark-text: #333;
+            --light-text: #fff;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Nanum Gothic', 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            color: #fff;
-            position: relative;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
         }
         
-        /* 배경 이미지 스타일 */
-        .background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: -1;
-            opacity: 0.8;
+        /* 헤더 스타일 */
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         /* 내용을 감싸는 컨테이너 */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            position: relative;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: var(--light-text);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         h1 {
-            color: #fff;
+            color: var(--primary-color);
             text-align: center;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2.2em;
         }
         
         /* 링크 버튼 컨테이너 */
         .button-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            gap: 15px;
         }
         
         /* 링크 버튼 스타일 */
         .link-button {
-            padding: 12px 25px;
-            background-color: #3498db;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s ease;
-            margin: 10px;
             text-align: center;
-            min-width: 150px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 180px;
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+        
+        .link-button i {
+            font-size: 24px;
+            margin-bottom: 8px;
         }
         
         .link-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(41, 128, 185, 0.4);
+        }
+        
+        /* 급식표 섹션 */
+        .meal-section {
+            margin-top: 40px;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        /* 날짜 표시 */
+        .current-date {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            font-weight: bold;
         }
         
         /* 급식표 스타일 */
@@ -81,91 +106,146 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
+            background-color: white;
+            color: var(--dark-text);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
         }
         
         .meal-table th, .meal-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
             text-align: center;
         }
         
         .meal-table th {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
+            font-weight: 600;
         }
         
         .meal-table tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f8f9fa;
         }
         
         .meal-table tr:hover {
-            background-color: #e6f7ff;
+            background-color: #e9f7fe;
         }
         
         /* 날짜 선택기 */
         .date-selector {
-            margin: 20px 0;
+            margin: 30px 0;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
         }
         
         .date-selector label {
             font-weight: bold;
-            margin-right: 10px;
-            color: white;
+            color: var(--dark-text);
         }
         
         .date-selector input {
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: 2px solid #e0e0e0;
+            font-size: 1em;
+            transition: all 0.3s;
         }
         
+        .date-selector input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        /* 푸터 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 반응형 디자인 */
         @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 15px;
+            }
+            
             .button-container {
                 flex-direction: column;
                 align-items: center;
             }
             
             .link-button {
-                width: 80%;
+                width: 100%;
                 margin: 5px 0;
+            }
+            
+            .date-selector {
+                flex-direction: column;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- 배경 이미지 -->
-    <div class="background-image"></div>
+    <!-- 헤더 -->
+    <header>
+        <h1 style="color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+">GKS 학교 급식표</h1>
+    </header>
     
     <!-- 메인 컨테이너 -->
-    <div class="container" style="
-    background-color: rgba(0, 0, 0, 1);
-    padding-bottom: 47px;
-">
-        <h1>GKS급식표</h1>
-        
-        <!-- 링크 버튼 5개 -->
+    <div class="container">
+        <!-- 링크 버튼 3개 -->
         <div class="button-container">
-            <a href="https://www.schoolwebsite.com" class="link-button" target="_blank" style="
-    padding-top: 50px;
-    padding-bottom: 50px;
-">엘노핌</a>
-            <a href="https://www.calendar.com" class="link-button" target="_blank" style="
-    padding-top: 50px;
-">그린</a>
-            <a href="https://www.library.com" class="link-button" target="_blank" style="
-    padding-top: 50px;
-">미소</a>
-
+            <a href="https://cn.bing.com/search?q=%EB%AD%90+%EC%96%B4%EC%A9%8C%EB%9D%BC%EA%B3%A0&cvid=2f62d18a7bdb49a5a847fed6a831935b&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDQxNDlqMGoxqAIAsAIA&FORM=ANAB01&PC=U531" class="link-button">
+                <i class="fas fa-utensils"></i>
+                엘노핌 급식표
+            </a>
+            <a href="https://cn.bing.com/search?q=%EB%AD%90+%EC%96%B4%EC%A9%8C%EB%9D%BC%EA%B3%A0&cvid=2f62d18a7bdb49a5a847fed6a831935b&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDQxNDlqMGoxqAIAsAIA&FORM=ANAB01&PC=U531" class="link-button">
+                <i class="fas fa-leaf"></i>
+                그린 급식표
+            </a>
+            <a href="https://cn.bing.com/search?q=%EB%AD%90+%EC%96%B4%EC%A9%8C%EB%9D%BC%EA%B3%A0&cvid=2f62d18a7bdb49a5a847fed6a831935b&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDQxNDlqMGoxqAIAsAIA&FORM=ANAB01&PC=U531" class="link-button">
+                <i class="fas fa-smile"></i>
+                미소 급식표
+            </a>
         </div>
         
-        
-        
-    
+        <!-- 급식표 섹션 -->
+        <div class="meal-section">
+            <div class="current-date">2025년 11월 급식표</div>
+            
+            <table class="meal-table">
+                <thead>
+                  
+                
+            </thead></table>
+        </div>
     </div>
     
-
+    <!-- 푸터 -->
+    <footer>
+        <p>© 2023 GKS School. All rights reserved.</p>
+        <p>문의: school@gks.edu | 전화: 02-1234-5678</p>
+    </footer>
 
 </body></html>
