@@ -216,15 +216,15 @@
     <div class="container">
         <!-- 링크 버튼 3개 -->
         <div class="button-container">
-            <a href="https://cn.bing.com/search?q=%EB%AD%90+%EC%96%B4%EC%A9%8C%EB%9D%BC%EA%B3%A0&cvid=2f62d18a7bdb49a5a847fed6a831935b&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDQxNDlqMGoxqAIAsAIA&FORM=ANAB01&PC=U531" class="link-button">
+            <a href="https://kidongju0000.github.io/el/" class="link-button">
                 <i class="fas fa-utensils"></i>
                 엘노핌 급식표
             </a>
-            <a href="https://cn.bing.com/search?q=%EB%AD%90+%EC%96%B4%EC%A9%8C%EB%9D%BC%EA%B3%A0&cvid=2f62d18a7bdb49a5a847fed6a831935b&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDQxNDlqMGoxqAIAsAIA&FORM=ANAB01&PC=U531" class="link-button">
+            <a href="https://kidongju0000.github.io/gr/" class="link-button">
                 <i class="fas fa-leaf"></i>
                 그린 급식표
             </a>
-            <a href="https://cn.bing.com/search?q=%EB%AD%90+%EC%96%B4%EC%A9%8C%EB%9D%BC%EA%B3%A0&cvid=2f62d18a7bdb49a5a847fed6a831935b&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBCDQxNDlqMGoxqAIAsAIA&FORM=ANAB01&PC=U531" class="link-button">
+            <a href="https://kidongju0000.github.io/ms/" class="link-button">
                 <i class="fas fa-smile"></i>
                 미소 급식표
             </a>
@@ -232,7 +232,7 @@
         
         <!-- 급식표 섹션 -->
         <div class="meal-section">
-            <div class="current-date">2025년 11월 급식표</div>
+            <div class="current-date">2025년 5월 급식표</div>
             
             <table class="meal-table">
                 <thead>
@@ -245,7 +245,7 @@
     <!-- 푸터 -->
     <footer>
         <p>© 2023 GKS School. All rights reserved.</p>
-        <p>문의: school@gks.edu | 전화: 02-1234-5678</p>
+        <p>문의: kidongdongju@gmail.com | 전화: 186-2088-5440</p>
     </footer>
 
 </body></html>
